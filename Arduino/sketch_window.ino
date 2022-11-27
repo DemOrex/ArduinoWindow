@@ -13,7 +13,7 @@ const int adressM1Up=2;
 const int adressM2Up=3;
 const int adressM3Up=4;
 
- int speedM150=100;
+ int speedM150=100; //скорость моторов
  int speedM160=120;
  int speedM170=140;
  int speedM180=160;
@@ -105,40 +105,40 @@ if(Serial.available() > 0) // есть ли что-то в буфере
        Serial.println(incomingbyte);   
      switch (incomingbyte)
        {  
-         case 'A': 
+         case 'A': // первый мотор вверх
          motor1UpBlu=!motor1UpBlu;
          if(motor1UpBlu ){delayM1Up(EEPROM.read(adressM1Up));}else{motor1.run(RELEASE);}
          break;
 
-         case 'a': 
+         case 'a': // первый мотор вниз
          motor1DownBlu=!motor1DownBlu;
           if(motor1DownBlu ){delayM1Down();}else{motor1.run(RELEASE);}
          break;
 
 
-         case 'B': 
+         case 'B': // второй мотор вверх
           motor2UpBlu=!motor2UpBlu;
          if(motor2UpBlu ){delayM2Up(EEPROM.read(adressM2Up));}else{motor2.run(RELEASE);}
          break;
 
-         case 'b': 
+         case 'b': // второй мотор в низ
           motor2DownBlu=!motor2DownBlu;
           if(motor2DownBlu ){delayM2Down();}else{motor2.run(RELEASE);}
          break;
 
 
-         case 'C': 
+         case 'C': // третий мотор вверх
          motor3UpBlu=!motor3UpBlu;
          if(motor3UpBlu ){delayM3Up(EEPROM.read(adressM3Up));}else{motor3.run(RELEASE);}
          break;
 
-         case 'c':
+         case 'c':// третий мотор вниз
        motor3DownBlu=!motor3DownBlu;
           if(motor3DownBlu ){delayM3Down();}else{motor3.run(RELEASE);}
          break;
 
 
-         case 'D': 
+         case 'D': // все моторы вверх
         delayM1Up(EEPROM.read(adressM1Up));
         delay(50);
         delayM2Up(EEPROM.read(adressM2Up));
@@ -146,20 +146,20 @@ if(Serial.available() > 0) // есть ли что-то в буфере
         delayM3Up(EEPROM.read(adressM3Up));
          break;
 
-         case 'l': 
+         case 'l': // все стоп
         motor1.run(RELEASE);
         motor2.run(RELEASE);
         motor3.run(RELEASE);
          break;
 
-         case 'd': 
+         case 'd': // все вниз
          delayM1Down();
          delay(30);
          delayM2Down();
          delay(30);
          delayM3Down();
          break;
-///////////////////////////////M1
+/////////////////////////////// регулируем скорость матора М1
          case 'E': 
          EEPROM.update(adressM1Up,speedM150);
          break;
@@ -178,7 +178,7 @@ if(Serial.available() > 0) // есть ли что-то в буфере
          case 'G': 
          EEPROM.update(adressM1Up,speedM190);
          break;
-/////////////////////////////M2
+/////////////////////////////  регулируем скорость матора   M2
          case 'g':
          EEPROM.update(adressM2Up,speedM150);
          break;
@@ -198,7 +198,7 @@ if(Serial.available() > 0) // есть ли что-то в буфере
          case 'i':
          EEPROM.update(adressM2Up,speedM190);
          break;
-/////////////////////////////////////M3
+///////////////////////////////////// регулируем скорость матора   M3
          case 'J': 
          EEPROM.update(adressM3Up,speedM150);
          break;
