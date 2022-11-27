@@ -1,5 +1,5 @@
 
-//// прототип работаем с  L293D Motor Shield на четыре матора 
+//// прототип работаем с  L293D Motor Shield на четыре матора и ArduinoUno
 
 #include <AFMotor.h>     // подключаем библиотеку для шилда
 #include <EEPROM.h>
